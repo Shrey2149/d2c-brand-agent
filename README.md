@@ -20,3 +20,24 @@ When someone has a business question, they jump between all of these, export to 
 - Brand and category managers, who own a product line and need answers fast
 - Growth and marketing teams, who want to know what customers love so they can use it in ads
 - Founders and leadership, who want a quick weekly summary without opening five dashboards
+
+## Architecture
+
+```mermaid
+flowchart TD
+    U["User question<br/>e.g. Why are joggers returned so much?"] --> A["Agent loop<br/>(Python)"]
+    A <-->|"sends context, gets next step"| L["LLM<br/>(Claude / GPT / Gemini)"]
+
+    A -->|"runs tool"| T1["get_product_info"]
+    A -->|"runs tool"| T2["search_reviews"]
+    A -->|"runs tool"| T3["get_sales"]
+    A -->|"runs tool"| T4["compare_prices"]
+
+    T1 --> D1[("products.csv")]
+    T2 --> D2[("reviews.csv")]
+    T3 --> D3[("sales.csv")]
+    T4 --> D4[("competitors.csv")]
+
+    T1 & T2 & T3 & T4 -.->|"result goes back"| A
+    A -->|"when LLM says done"| R["Report<br/>answer + chart"]
+```
