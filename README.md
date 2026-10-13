@@ -37,7 +37,11 @@ flowchart TD
     T2 --> D2[("reviews.csv")]
     T3 --> D3[("sales.csv")]
     T4 --> D4[("competitors.csv")]
+
+    T1 & T2 & T3 & T4 -.->|"result goes back"| A
+    A -->|"when LLM says done"| R["Report<br/>answer + chart"]
 ```
+
 
 ## Tech Stack
 
@@ -86,7 +90,3 @@ flowchart TD
 - [ ] Blog post: how I built and evaluated this agent
 - [ ] 2-minute demo video
 - [ ] **Deliverable:** launch post on LinkedIn
-
-    T1 & T2 & T3 & T4 -.->|"result goes back"| A
-    A -->|"when LLM says done"| R["Report<br/>answer + chart"]
-```
