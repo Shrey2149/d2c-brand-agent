@@ -37,6 +37,55 @@ flowchart TD
     T2 --> D2[("reviews.csv")]
     T3 --> D3[("sales.csv")]
     T4 --> D4[("competitors.csv")]
+```
+
+## Tech Stack
+
+| Layer | Tool | Why |
+|---|---|---|
+| Language | Python 3.11+ | The standard language for AI work |
+| LLM | Gemini API *(or Claude API)* | The "brain" that plans and calls tools |
+| Data | CSV files + pandas | Simple, no database server needed |
+| Validation | Pydantic | Makes sure the LLM's JSON output has the right shape |
+| Vector search | Chroma | Finds reviews by meaning, not just keywords |
+| Tool protocol | MCP (Python SDK) | The standard way agents connect to tools |
+| Charts | matplotlib | Charts inside the report |
+| UI | Streamlit | Chat interface in a few lines of Python |
+| Hosting | Hugging Face Spaces | Free deployment with a public link |
+
+## Milestones
+
+### Week 1 (Oct 12–18): Foundations
+- [ ] Understand core concepts: LLM, tokens, context window, system prompt, tool calls, agent loop
+- [ ] Architecture diagram and project plan
+- [ ] First LLM API call from Python
+- [ ] Structured JSON output with Pydantic
+- [ ] Synthetic dataset: 30 products, ~500 reviews, 90 days of sales
+- [ ] Agent loop written from scratch (no frameworks) with 3 tools
+- [ ] **Deliverable:** working CLI agent on GitHub
+
+### Week 2 (Oct 19–25): Make it smart
+- [ ] Semantic review search with embeddings + Chroma (RAG)
+- [ ] Tools moved into an MCP server
+- [ ] Competitor price comparison tool
+- [ ] Planning step + Markdown reports with charts
+- [ ] Conversation memory for follow-up questions
+- [ ] **Deliverable:** agent answers multi-step questions correctly
+
+### Week 3 (Oct 26–Nov 1): Make it professional
+- [ ] 20-question evaluation set with expected answers
+- [ ] Automatic eval runner + baseline score
+- [ ] Improve the agent and re-score
+- [ ] Logging: tool calls, tokens, latency, cost
+- [ ] Streamlit chat UI
+- [ ] Deployed with a public link
+- [ ] **Deliverable:** live demo anyone can try
+
+### Week 4 (Nov 2–11): Show the world
+- [ ] Portfolio website with this project as the main case study
+- [ ] Blog post: how I built and evaluated this agent
+- [ ] 2-minute demo video
+- [ ] **Deliverable:** launch post on LinkedIn
 
     T1 & T2 & T3 & T4 -.->|"result goes back"| A
     A -->|"when LLM says done"| R["Report<br/>answer + chart"]
