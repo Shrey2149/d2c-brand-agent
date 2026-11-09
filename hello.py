@@ -11,6 +11,6 @@ client = genai.Client(
 
 response = client.models.generate_content(
     model = "gemini-3.5-flash-lite",
-    contents = "Explain what a D2C brand is in one sentence.",
+    contents = "Explian me some cybersec concepts.",
 )
 print(response.text)
